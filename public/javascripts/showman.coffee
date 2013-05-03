@@ -30,23 +30,19 @@ showman =
             showman.deck.prev()
           showman.socket.on "slide", (data) ->
             showman.deck.slide(data)
-          showman.deck.on "activate", (event) ->
-            showman.socket.emit "slide", event.index
         when "rc"
           showman.deck = bespoke.from "article",
             center: true
+          showman.index = 0
           Hammer(showman.deck.parent)
             .on "tap", (e) ->
               showman.socket.emit "next"
-              return
             .on "swipeleft", (e) ->
-              showman.deck.next()
+              if showman.index + 1 < showman.deck.slides.length then ++showman.index else showman.index
+              showman.socket.emit "slide", showman.index
+              showman.deck.slide showman.index
             .on "swiperight", (e) ->
-              showman.deck.prev()
-          showman.socket.on "slide", (data) ->
-            showman.deck.slide data
-          showman.deck.on "next", (event) ->
-            showman.socket.emit "slide", event.index + 1
-          showman.deck.on "prev", (event) ->
-            showman.socket.emit "slide", event.index - 1
+              if showman.index - 1 >= 0 then --showman.index else showman.index
+              showman.socket.emit "slide", showman.index
+              showman.deck.slide showman.index
       return

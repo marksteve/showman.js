@@ -41,29 +41,30 @@ showman = {
           showman.socket.on("slide", function(data) {
             return showman.deck.slide(data);
           });
-          showman.deck.on("activate", function(event) {
-            return showman.socket.emit("slide", event.index);
-          });
           break;
         case "rc":
           showman.deck = bespoke.from("article", {
             center: true
           });
+          showman.index = 0;
           Hammer(showman.deck.parent).on("tap", function(e) {
-            showman.socket.emit("next");
+            return showman.socket.emit("next");
           }).on("swipeleft", function(e) {
-            return showman.deck.next();
+            if (showman.index + 1 < showman.deck.slides.length) {
+              ++showman.index;
+            } else {
+              showman.index;
+            }
+            showman.socket.emit("slide", showman.index);
+            return showman.deck.slide(showman.index);
           }).on("swiperight", function(e) {
-            return showman.deck.prev();
-          });
-          showman.socket.on("slide", function(data) {
-            return showman.deck.slide(data);
-          });
-          showman.deck.on("next", function(event) {
-            return showman.socket.emit("slide", event.index + 1);
-          });
-          showman.deck.on("prev", function(event) {
-            return showman.socket.emit("slide", event.index - 1);
+            if (showman.index - 1 >= 0) {
+              --showman.index;
+            } else {
+              showman.index;
+            }
+            showman.socket.emit("slide", showman.index);
+            return showman.deck.slide(showman.index);
           });
       }
     });
