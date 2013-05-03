@@ -50,7 +50,10 @@ io.on("connection", function(socket) {
   socket.on("prev", function(data) {
     return socket.broadcast.emit("prev", data);
   });
-  return socket.on("slide", function(data) {
+  socket.on("slide", function(data) {
     return socket.broadcast.emit("slide", data);
+  });
+  return socket.on("index", function(data) {
+    return socket.broadcast.emit("index", data);
   });
 });

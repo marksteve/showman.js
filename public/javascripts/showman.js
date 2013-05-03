@@ -26,6 +26,7 @@ showman = {
     });
     return $(document).imagesLoaded(function() {
       $(".loading").remove();
+      showman.index = 0;
       switch (page) {
         case "slides":
           showman.deck = bespoke.horizontal.from("article", {
@@ -41,12 +42,14 @@ showman = {
           showman.socket.on("slide", function(data) {
             return showman.deck.slide(data);
           });
+          showman.deck.on("activate", function(e) {
+            return showman.socket.emit("index", e.index);
+          });
           break;
         case "rc":
           showman.deck = bespoke.from("article", {
             center: true
           });
-          showman.index = 0;
           Hammer(showman.deck.parent).on("tap", function(e) {
             return showman.socket.emit("next");
           }).on("swipeleft", function(e) {
@@ -65,6 +68,9 @@ showman = {
             }
             showman.socket.emit("slide", showman.index);
             return showman.deck.slide(showman.index);
+          });
+          showman.socket.on("index", function(data) {
+            return showman.index = data;
           });
       }
     });

@@ -19,6 +19,7 @@ showman =
       console.log("Connected", showman.socket.socket.sessionid)
     $(document).imagesLoaded ->
       $(".loading").remove()
+      showman.index = 0
       switch page
         when "slides"
           showman.deck = bespoke.horizontal.from "article",
@@ -30,10 +31,11 @@ showman =
             showman.deck.prev()
           showman.socket.on "slide", (data) ->
             showman.deck.slide(data)
+          showman.deck.on "activate", (e) ->
+            showman.socket.emit "index", e.index
         when "rc"
           showman.deck = bespoke.from "article",
             center: true
-          showman.index = 0
           Hammer(showman.deck.parent)
             .on "tap", (e) ->
               showman.socket.emit "next"
@@ -45,4 +47,6 @@ showman =
               if showman.index - 1 >= 0 then --showman.index else showman.index
               showman.socket.emit "slide", showman.index
               showman.deck.slide showman.index
+          showman.socket.on "index", (data) ->
+            showman.index = data
       return

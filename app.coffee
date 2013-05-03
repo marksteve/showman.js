@@ -38,3 +38,5 @@ io.on "connection", (socket) ->
     socket.broadcast.emit("prev", data)
   socket.on "slide", (data) ->
     socket.broadcast.emit("slide", data)
+  socket.on "index", (data) ->
+    socket.broadcast.emit("index", data)
