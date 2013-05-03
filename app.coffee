@@ -19,6 +19,8 @@ app.configure ->
   app.use app.router
   app.use require("stylus").middleware(__dirname + "/public")
   app.use express.static(path.join(__dirname, "public"))
+  if config.assetsPath?
+    app.use express.static(config.assetsPath)
 
 app.configure "development", ->
   app.use express.errorHandler()
