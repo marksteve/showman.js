@@ -42,11 +42,10 @@ showman =
             .on "swipeleft", (e) ->
               if showman.index + 1 < showman.deck.slides.length then ++showman.index else showman.index
               showman.socket.emit "slide", showman.index
-              showman.deck.slide showman.index
             .on "swiperight", (e) ->
               if showman.index - 1 >= 0 then --showman.index else showman.index
               showman.socket.emit "slide", showman.index
-              showman.deck.slide showman.index
           showman.socket.on "index", (data) ->
             showman.index = data
+            showman.deck.slide showman.index
       return

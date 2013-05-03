@@ -58,19 +58,18 @@ showman = {
             } else {
               showman.index;
             }
-            showman.socket.emit("slide", showman.index);
-            return showman.deck.slide(showman.index);
+            return showman.socket.emit("slide", showman.index);
           }).on("swiperight", function(e) {
             if (showman.index - 1 >= 0) {
               --showman.index;
             } else {
               showman.index;
             }
-            showman.socket.emit("slide", showman.index);
-            return showman.deck.slide(showman.index);
+            return showman.socket.emit("slide", showman.index);
           });
           showman.socket.on("index", function(data) {
-            return showman.index = data;
+            showman.index = data;
+            return showman.deck.slide(showman.index);
           });
       }
     });
