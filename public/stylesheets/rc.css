@@ -1,0 +1,68 @@
+* {
+  -webkit-box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font: 16px/1.2 "Roboto Slab";
+  color: #333;
+  text-align: center;
+}
+a {
+  color: #00b7ff;
+}
+h1,
+h2 {
+  font-family: "Roboto Condensed";
+}
+h1 {
+  font-size: 400%;
+}
+h2 {
+  font-size: 250%;
+  color: #999;
+}
+h3 {
+  font-size: 150%;
+}
+ul,
+p {
+  margin-top: 1.2em;
+}
+ul {
+  display: inline-block;
+  margin-left: 2em;
+}
+ul li {
+  text-align: left;
+}
+.bespoke-parent,
+.loading {
+  background: #333;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+.loading {
+  color: #fff;
+  padding-top: 25%;
+}
+.bespoke-slide {
+  background: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-transition: all 0.8s ease;
+}
+.bespoke-active {
+  opacity: 1;
+}
+.bespoke-inactive {
+  opacity: 0;
+}

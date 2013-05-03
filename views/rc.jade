@@ -1,0 +1,14 @@
+extends layout
+
+block stylesheets
+  link(rel='stylesheet', href='/stylesheets/rc.css')
+
+block content
+  article
+    for note in notes
+      section
+        !{note}
+
+block javascripts
+  script
+    showman.init("rc")

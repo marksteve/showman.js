@@ -1,0 +1,22 @@
+doctype 5
+html
+  head
+    title= settings.title
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet', href='//fonts.googleapis.com/css?family=Roboto+Condensed:300italic,400italic,700italic,400,300,700')
+    link(rel='stylesheet', href='//fonts.googleapis.com/css?family=Roboto+Slab:400,300,700')
+    block stylesheets
+
+  body
+    block content
+
+    div.loading Loading&hellip;
+
+    script(src='/javascripts/components/bespoke.js/src/bespoke.js')
+    script(src='/javascripts/components/bespoke-bullets/src/bespoke-bullets.js')
+    script(src='/javascripts/components/jquery/jquery.min.js')
+    script(src='/javascripts/components/imagesloaded/jquery.imagesloaded.min.js')
+    script(src='//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.10/socket.io.min.js')
+    script(src='//cdnjs.cloudflare.com/ajax/libs/hammer.js/1.0.5/hammer.min.js')
+    script(src='/javascripts/showman.js')
+    block javascripts

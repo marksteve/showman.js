@@ -1,0 +1,14 @@
+extends layout
+
+block stylesheets
+  link(rel='stylesheet', href='/stylesheets/slides.css')
+
+block content
+  article
+    for slide in slides
+      section
+        !{slide}
+
+block javascripts
+  script
+    showman.init("slides")

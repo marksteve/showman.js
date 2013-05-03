@@ -1,0 +1,36 @@
+{
+  "name": "bespoke-bullets",
+  "title": "bespoke-bullets",
+  "version": "0.0.1-alpha-2",
+  "description": "Bullet Lists for Bespoke.js",
+  "author": {
+    "name": "Mark Dalgleish",
+    "url": "http://markdalgleish.com"
+  },
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/markdalgleish/bespoke-bullets"
+  },
+  "devDependencies": {
+    "grunt": "~0.3.17",
+    "grunt-jasmine-runner": "~0.6.0",
+    "temporary": "0.0.5"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://mit-license.org/markdalgleish"
+    }
+  ],
+  "keywords": [
+    "bespoke.js-plugin"
+  ],
+  "readme": "[![Build Status](https://secure.travis-ci.org/markdalgleish/bespoke-bullets.png)](http://travis-ci.org/markdalgleish/bespoke-bullets)\n\n# bespoke-bullets\n\n### Bullet Lists for [Bespoke.js](https://github.com/markdalgleish/bespoke.js)\n\nStyle and animate bullet lists and their transitions with some simple CSS rules.\n\n## Download\n\nDownload the [production version][min] or the [development version][max].\n\n[min]: https://raw.github.com/markdalgleish/bespoke-bullets/master/dist/bespoke-bullets.min.js\n[max]: https://raw.github.com/markdalgleish/bespoke-bullets/master/dist/bespoke-bullets.js\n\n## Usage\n\nFirst, include both `bespoke.js` and `bespoke-bullets.js` in your page.\n\nNext, add `data-bespoke-bullet` attributes to your bullet elements.\n\n```html\n<article>\n  <section>\n    <ul>\n      <li data-bespoke-bullet>Bullet 1</li>\n      <li data-bespoke-bullet>Bullet 2</li>\n      <li data-bespoke-bullet>Bullet 3</li>\n    </ul>\n  </section>\n</article>\n```\n\nThen, simply include the plugin when using the `from(selector[, plugins])` method.\n\n```js\nbespoke.horizontal.from('article', {\n  bullets: true\n});\n```\n\nYou can now style your bullets and their animations by using the provided classes.\n\n### CSS\n\nThe following classes are available on your bullet elements.\n\n<table>\n   <tr>\n    <td><b>bespoke-bullet</b></td>\n    <td>Every bullet element</td>\n   </tr>\n   <tr>\n    <td><b>bespoke-bullet-active</b></td>\n    <td>All active bullets</td>\n   </tr>\n   <tr>\n    <td><b>bespoke-bullet-inactive</b></td>\n    <td>All inactive bullets</td>\n   </tr>\n</table>\n\n## Questions?\n\nContact me on GitHub or Twitter: [@markdalgleish](http://twitter.com/markdalgleish)\n\n## License\n\nCopyright 2013, Mark Dalgleish  \nThis content is released under the MIT license  \nhttp://markdalgleish.mit-license.org",
+  "_id": "bespoke-bullets@0.0.1-alpha-2"
+}
